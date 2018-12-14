@@ -1,0 +1,5 @@
+MySql dump using console to self-contained file:
+C:\Program Files\MySQL\MySQL Workbench 8.0 CE>mysqldump --column-statistics=0 --user=root --password=123456 --host=localhost --port=3306 --protocol=tcp -p goodjob > C:\JobVersioning.sql
+
+MySql dump using console to Dump Proj Folder:
+C:\Program Files\MySQL\MySQL Workbench 8.0 CE>mysqldump --column-statistics=0 --user=root --password=123456 --host=localhost --port=3306 --protocol=tcp --tab="C:\ManyMig" migrtest
