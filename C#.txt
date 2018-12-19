@@ -1,0 +1,2 @@
+var resolvedJson = enumResolver.Aggregate(content,
+				(current, value) => current.Replace(value.Key, value.Value));
