@@ -1,2 +1,14 @@
 var resolvedJson = enumResolver.Aggregate(content,
 				(current, value) => current.Replace(value.Key, value.Value));
+
+===============================================================================================================
+Custom target to change .config file after build
+
+<Target Name="SetUpAppConfig" AfterTargets="Build;Rebuild" Condition="'$(Configuration)' == 'Release'">
+    <XmlPoke XmlInputPath="bin\$(Configuration)\$(MSBuildProjectName).dll.config" Query="//add[@key='BaseURL']/@value" Value="$(VMSTestInstance)">
+    </XmlPoke>
+    <XmlPoke XmlInputPath="bin\$(Configuration)\$(MSBuildProjectName).dll.config" Query="//connectionStrings/add[@name='VMSContext']/@connectionString" Value="server=localhost%3Bport=3306%3Bdatabase=$(IntegrationTestsDb)%3Buid=root%3Bpassword=123456%3BSslMode=none">
+    </XmlPoke>
+    <XmlPoke XmlInputPath="$(Vms_publish_destination)/Web.config" Query="//connectionStrings/add[@name='VMSContext']/@connectionString" Value="Data Source=localhost%3Bport=3306%3BInitial Catalog=$(IntegrationTestsDb)%3Buser id=root%3Bpassword=123456%3BAllowUserVariables=True%3B">
+    </XmlPoke>
+  </Target>
