@@ -1,0 +1,37 @@
+Source: https://stackoverflow.com/questions/17604232/edit-a-commit-message-in-sourcetree-windows-already-pushed-to-remote
+
+Step 1
+
+Select the commit immediately before the commit that you want to edit. For example, if I want to edit the commit with message "FOOBAR!" then I need to select the commit that comes right before it
+
+Step 2
+
+Right-click on the selected commit and click Rebase children...interactively
+
+Step 3
+
+Select the commit that you want to edit, then click Edit Message at the bottom. In this case, I'm selecting the commit with the message "FOOBAR!"
+
+Step 4
+
+Edit the commit message, and then click OK. In my example, I've added "SHAZBOT! SKADOOSH!"
+
+Step 5
+
+When you return to interactive rebase window, click on OK to finish the rebase
+
+Step 6
+
+At this point, you'll need to force-push your new changes since you've rebased commits that you've already pushed. However, the current 1.5.2.0 version of SourceTree for Windows does not allow you to force-push through the GUI, so you'll need to use Git from the command line anyways in order to do that.
+
+Click Terminal from the GUI to open up a terminal.
+
+Step 7
+
+From the terminal force-push with the following command,
+
+git push origin <branch> -f
+
+where <branch> is the name of the branch that you want to push, and -f means to force the push. The force push will overwrite your commits on your remote repo, but that's OK in your case since you said that you're not sharing your repo with other people.
+
+That's it! You're done!
