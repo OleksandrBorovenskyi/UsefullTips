@@ -1,0 +1,12 @@
+INSERT FileRepository
+(
+	[iParentId],
+	[sParentType],
+	[sTitleCode],
+	[oDocFile]
+)
+SELECT
+	0 as [iParentId],
+	N'Communication',
+	N'EC-New-claim-int' as sTitleCode,
+	* FROM OPENROWSET(BULK N'C:\temp\Letter Templates\EC-New-claim-int.html', SINGLE_BLOB) rs
