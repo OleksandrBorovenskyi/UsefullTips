@@ -1,3 +1,6 @@
+-- Source:
+--	https://stackoverflow.com/questions/1800036/how-do-i-upload-a-file-to-a-varbinarymax-column-in-sql-server-2008-using-tsql
+
 INSERT FileRepository
 (
 	[iParentId],
